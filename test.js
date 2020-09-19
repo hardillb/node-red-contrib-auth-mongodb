@@ -7,10 +7,10 @@ var mongoose_options = {
 	useUnifiedTopology: true
 };
 
-mongoose.connect("mongodb://192.168.1.96:27017/nodered", mongoose_options)
+mongoose.connect("mongodb://localhost:27017/nodered", mongoose_options)
 .then(async () => {
 	var u = new Users({
-		appname: "r2",
+		appname: "r1",
 		username: "admin",
 		email: "foo@example.com",
 		permissions: "*"

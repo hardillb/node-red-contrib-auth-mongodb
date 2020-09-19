@@ -16,6 +16,7 @@ module.exports = {
       appname = settings.appname;
       mongoose.connect(settings.mongoURI, mongoose_options)
       .then(() => {
+        //console.log("connected to auth db");
       })
       .catch(err => {
         throw err;
@@ -24,21 +25,26 @@ module.exports = {
     return this;
   },
   users: function(username) {
+    // console.log("looking for " + username);
     return new Promise(function (resolve, reject){
       Users.findOne({appname: appname, username: username}, {username: 1, permissions: 1})
       .then(user => {
-        resolve(user);
+        // console.log("user lookup found ");
+        resolve({username: user.username, permissions: user.permissions});
       })
     });
   },
   authenticate: function(username, password) {
+    // console.log("auth for " + username);
       return new Promise(function(resolve, reject){
         Users.findOne({appname: appname, username})
         .then((user) => {
-          user.authenticate(password, function(e,u,pe){
+          user.authenticate(password, function(e,u,pe){  
             if (u) {
-              resolve(u)
+              // console.log("auth good");
+              resolve({username: u.username, permissions: u.permissions});
             } else {
+              // console.log("auth failed")
               resolve(null);
             }
           })
@@ -46,6 +52,7 @@ module.exports = {
       }) 
   },
   default: function() {
+    // console.log("default");
     return Promise.resolve(null);
   }
 }
