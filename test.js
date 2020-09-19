@@ -10,7 +10,7 @@ var mongoose_options = {
 mongoose.connect("mongodb://192.168.1.96:27017/nodered", mongoose_options)
 .then(async () => {
 	var u = new Users({
-		appname: "r1",
+		appname: "r2",
 		username: "admin",
 		email: "foo@example.com",
 		permissions: "*"

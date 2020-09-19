@@ -15,6 +15,6 @@ adminAuth: require('node-red-contrib-auth-mongodb').setup({
 
 Where `mongoURI` is the location of a MongoDB database and `appname` is a unique identifier for this instance of Node-RED to allow multiple instances to use the same DB.
 
-It will use a collection called `users` in the datase.
+It will use a collection called `users` in the datbase.
 
 For an example of how to create user entries in the collection look at `test.js`
