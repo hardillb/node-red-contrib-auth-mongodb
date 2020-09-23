@@ -32,6 +32,9 @@ module.exports = {
         // console.log("user lookup found ");
         resolve({username: user.username, permissions: user.permissions});
       })
+      .catch(err => {
+        reject(err);
+      })
     });
   },
   authenticate: function(username, password) {
@@ -48,6 +51,9 @@ module.exports = {
               resolve(null);
             }
           })
+        })
+        .catch(err => {
+          reject(err);
         })
       }) 
   },
