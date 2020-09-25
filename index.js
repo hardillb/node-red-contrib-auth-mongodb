@@ -4,7 +4,9 @@ const Users = require('./models/users');
 
 var mongoose_options = {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 };
 
 var appname
