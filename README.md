@@ -17,4 +17,4 @@ Where `mongoURI` is the location of a MongoDB database and `appname` is a unique
 
 It will use a collection called `users` in the datbase.
 
-For an example of how to create user entries in the collection look at `test.js`
+For an example of how to create user entries in the collection look at `create-user.js`

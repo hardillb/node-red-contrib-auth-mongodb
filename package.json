@@ -21,5 +21,8 @@
   "dependencies": {
     "mongoose": "^5.10.5",
     "passport-local-mongoose": "^6.0.1"
+  },
+  "devDependencies": {
+    "command-line-args": "^5.1.1"
   }
 }
