@@ -44,15 +44,19 @@ module.exports = {
       return new Promise(function(resolve, reject){
         Users.findOne({appname: appname, username})
         .then((user) => {
-          user.authenticate(password, function(e,u,pe){  
-            if (u) {
-              // console.log("auth good");
-              resolve({username: u.username, permissions: u.permissions});
-            } else {
-              // console.log("auth failed")
-              resolve(null);
-            }
-          })
+          if(user) {
+            user.authenticate(password, function(e,u,pe){  
+              if (u) {
+                // console.log("auth good");
+                resolve({username: u.username, permissions: u.permissions});
+              } else {
+                // console.log("auth failed")
+                resolve(null);
+              }
+            })
+          } else {
+            resolve(null);
+          }
         })
         .catch(err => {
           reject(err);
