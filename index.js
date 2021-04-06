@@ -42,7 +42,7 @@ module.exports = {
   authenticate: function(username, password) {
     // console.log("auth for " + username);
       return new Promise(function(resolve, reject){
-        Users.findOne({appname: appname, username})
+        Users.findOne({appname: appname, username: username})
         .then((user) => {
           if(user) {
             user.authenticate(password, function(e,u,pe){  
