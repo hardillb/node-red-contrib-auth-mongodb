@@ -45,7 +45,7 @@ module.exports = {
         Users.findOne({appname: appname, username: username})
         .then( (userObj) => {
           if(userObj) {
-            user.authenticate(password)
+            userObj.authenticate(password)
             .then( ({user}) => {  
               if (user) {
                 // console.log("auth good");
