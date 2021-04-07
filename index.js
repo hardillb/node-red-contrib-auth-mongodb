@@ -43,13 +43,13 @@ module.exports = {
     // console.log("auth for " + username);
       return new Promise(function(resolve, reject){
         Users.findOne({appname: appname, username: username})
-        .then( (user) => {
-          if(user) {
+        .then( (userObj) => {
+          if(userObj) {
             user.authenticate(password)
-            .then( u => {  
-              if (u) {
+            .then( ({user}) => {  
+              if (user) {
                 // console.log("auth good");
-                resolve({username: u.username, permissions: u.permissions});
+                resolve({username: user.username, permissions: user.permissions});
               } else {
                 // console.log("auth failed")
                 resolve(null);
