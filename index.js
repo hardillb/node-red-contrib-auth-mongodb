@@ -28,11 +28,16 @@ module.exports = {
   },
   users: function(username) {
     // console.log("looking for " + username);
+    username = username.toLowerCase();
     return new Promise(function (resolve, reject){
       Users.findOne({appname: appname, username: username}, {username: 1, permissions: 1})
       .then(user => {
         // console.log("user lookup found ");
-        resolve({username: user.username, permissions: user.permissions});
+        if (user) {
+          resolve({username: user.username, permissions: user.permissions});
+        } else {
+          resolve(null)
+        }
       })
       .catch(err => {
         reject(err);
@@ -41,6 +46,7 @@ module.exports = {
   },
   authenticate: function(username, password) {
     // console.log("auth for " + username);
+      username = username.toLowerCase();
       return new Promise(function(resolve, reject){
         Users.findOne({appname: appname, username: username})
         .then( (userObj) => {
