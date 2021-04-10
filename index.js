@@ -48,7 +48,7 @@ module.exports = {
     // console.log("auth for " + username);
       username = username.toLowerCase();
       return new Promise(function(resolve, reject){
-        Users.findOne({appname: appname, username: username})
+        Users.findOne({appname: appname, username: username}).select('+hash +salt')
         .then( (userObj) => {
           if(userObj) {
             userObj.authenticate(password)
